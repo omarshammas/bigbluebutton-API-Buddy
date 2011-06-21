@@ -1,0 +1,312 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+img {
+	border:0;
+}
+
+h1 {
+	font-size: 40px;
+	margin: 0;
+	font-family:"Helvetica";
+	/* color: #555b63; */
+	color: #919da6;
+	letter-spacing:0.5px;
+	font-weight:100;
+	line-height: 125%;
+}
+
+h1.api{
+	font-size: 18px;
+	margin: 0;
+	font-family:"Trebuchet MS";
+	font-weight:bold;
+	color: #303030;
+	letter-spacing:0.5px;
+}
+
+h2 {
+	font-size: 25px;
+	margin: 0;
+	margin-top:13px;
+	font-family:"Helvetica";
+	color: #919da6;
+	letter-spacing:0.5px;
+	font-weight:100;
+	line-height: 125%;
+}
+
+h2.api{
+	font-size: 16px;
+	margin: 0;
+	font-family:"Trebuchet MS";
+	font-weight:bold;
+	color: #666;
+}
+
+h3 {
+	font-size: 14px;
+	margin:0;
+	font-family:"Helvetica";
+	color: #000;
+}
+
+p, ol {
+	margin: 0 0 0.2em 0;
+	/* text-align: justify; */
+	font-family: Arial, Helvetica, sans-serif;
+	color: #303030;
+}
+
+p.small{
+	/* text-align: justify; */
+	font-family: Arial, Helvetica, sans-serif;
+	color: #666;
+	letter-spacing:0.5px;
+	font-size:11px;
+	margin-top:10px;
+}
+
+p.content {
+	margin: 0.5em 0 0.5em 0;
+	/* text-align: justify; */
+	font-family:"Helvetica";
+	line-height:20px;
+	letter-spacing:0.2px;
+	color: #303030;
+	
+}
+
+p.join{
+	text-align: justify;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #303030;
+	margin-top:-20px;
+	margin-left:30px;
+	
+}
+
+ul{
+	text-align: justify;
+	font-family: Arial, Helvetica, sans-serif;	
+}
+
+li {
+	text-align: justify;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+	color:#adb1ca;
+	text-decoration:none;
+}
+
+a:hover{
+	color:#919da6;
+	text-decoration:underline;
+	
+}
+
+a:active{
+	color:#919da6;
+	text-decoration:underline;
+}
+
+#field{
+	width:120px;
+}
+
+#wrapper {
+	background: #b2bad9;
+	height: 136px;
+}
+
+
+/* Header */
+
+#header {
+	width: 800px;
+	height: 120px;
+	margin: 0 auto 20px auto;
+	padding-top: 10px;
+  /*border:solid #FF0000 1px;*/
+}
+
+#header_bottom {
+	width:800px;
+	height:21px;
+	margin: 0 auto;
+}
+
+#logo {
+	float: left;
+	height: 89px;
+	width: 364px;
+	margin-top: 10px;
+}
+
+#logo a {
+	text-decoration: none;
+}
+
+#slogan{
+	float:right;
+	margin-top:-25px;
+	letter-spacing:1px;
+}
+
+#header_right{
+	float: right;
+	margin-top: 15px;
+	/*border:solid #666 1px;*/
+	width:300px;
+	height:50px;
+}
+
+#header_right a{
+	color:#919da6;
+}
+#header_right a:active{
+	text-decoration:underline;
+}
+
+
+#menu {
+	margin-left:-5px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0 0 0 0;
+	list-style: none;
+}
+
+#menu li {
+	display: inline;
+}
+
+#menu a {
+	display: block;
+	background:#d5d9ec;
+	float:left;
+	margin-left: 5px;
+	padding: 7px 10px;
+	line-height: 140%;
+	font-family:"Trebuchet MS";
+	letter-spacing:1px;
+	font-size: 12pt;
+	text-decoration: none;
+	color: #666;
+	border-bottom:solid #666 1px;
+	margin-top:20px;
+}
+
+#menu a:hover {
+	background:#c0c4d4;
+	
+}
+
+#menu a:active {
+	background:#c0c4d4;
+	
+}
+
+
+/* Page */
+#nav{
+	width: 700px;
+	margin: 0 auto;
+}
+#content {
+	width: 955px;
+	height:auto;
+	min-height: 400px;
+	margin: 0 auto;
+	/*padding: 20px 20px;*/
+	margin-top:32px;
+	/*border:solid #FF0000 1px;*/
+}
+
+#content_api {
+	width: 750px;
+	height:auto;
+	min-height: 400px;
+	margin: 0 auto;
+	padding: 20px 20px;
+	margin-top:56px;
+	border:solid #666 1px;
+	
+}
+
+#welcome{
+	width:452px;
+	height:200px;
+	/*border:solid #666 1px;*/
+	float:left;
+	
+}
+
+#join{
+	width:315px;
+	height:200px;
+	/*border:solid #666 1px;*/
+	float:right;
+}
+
+#about{
+	width:452px;
+	height:200px;
+	/*border:solid #666 1px;*/
+	margin-top:15px;
+	float:left;
+	
+}
+
+#api{
+	
+	width:315px;
+	height:200px;
+	/*border:solid #666 1px;*/
+	margin-top:15px;
+	float:right;
+	
+}
+
+#links_table tr {
+	border-bottom:solid;
+}
+
+/* Footer */
+
+#footer {
+	height: 200px;
+	min-height: 74px;
+	padding: 10px 0 0 0;
+	/*background: #000;*/
+	clear:both;
+}
+
+html>body #footer {
+	height: auto;
+}
+
+#legal {
+	clear: both;
+	padding-top: 20px;
+	text-align: center;
+	font-size: 14px;
+	font-weight:bold;
+	color: #666;
+}
+
+#legal a {
+	color: #c0c4d4;
+}
+
+
