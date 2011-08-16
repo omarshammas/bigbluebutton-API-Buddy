@@ -153,7 +153,7 @@
 					
 					//Creates the URLs
 					var $params = "name=" + $meetingName + "&meetingID=" + $meetingID + "&moderatorPW=" + $moderatorPW + "&attendeePW=" + $attendeePW + "&welcome=" + $welcome;
-					$params += "&logoutURL=" + $logoutURL + "&maxParticipants=" + $maxParticipants + "&voiceBridge=" + $voiceBridge + "&dialNumber=" + $dialNumber + "&meta_test=" + $meta_test + "&meta_description=" + $meta_description;
+					$params += "&logoutURL=" + $logoutURL + "&maxParticipants=" + $maxParticipants + "&voiceBridge=" + $voiceBridge + "&dialNumber=" + $dialNumber;
 					var $createURL = $server + "create?" + $params + "&checksum=" + $.sha1("create" + $params + $salt);
 
 					var $params = "name=" + $meetingName + "&meetingID=" + $meetingID + "&moderatorPW=" + $moderatorPW + "&attendeePW=" + $attendeePW + "&welcome=" + $welcome;
