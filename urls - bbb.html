@@ -37,11 +37,11 @@
 				<table id="basic_form" >
 					<tr>
 						<td id="field">Server</td>
-						<td><input type="text" size="60" id="server" value="http://test-install.blindsidenetworks.com/bigbluebutton/api/"/></td>
+						<td><input type="text" size="60" id="server" value="http://192.168.0.35/bigbluebutton/api/"/></td>
 					</tr>
 					<tr>
 						<td id="field">Salt</td>
-						<td><input type="text" size="60" id="salt" value="8cd8ef52e8e101574e400365b55e11a6"/></td>
+						<td><input type="text" size="60" id="salt" value="36f7028ec572dbbb4e1032a607462a4e"/></td>
 					</tr>
 					<tr>
 						<td id="field">Meeting ID</td>
@@ -118,6 +118,9 @@
 				$("#advanced_form").append('<tr><td id="field">Maximum Participants</td><td><input type="text"  size="60" id="maxParticipants" value=""/></td></tr>');
 				$("#advanced_form").append('<tr><td id="field">Voice Bridge</td><td><input type="text"  size="60" id="voiceBridge" value=""/></td><td>( Usually a 5 digit number, and begins with 7 if using FreeSwitch ) </td></tr>');
 				$("#advanced_form").append('<tr><td id="field">Dial in Number</td><td><input type="text"  size="60" id="dialNumber" value=""/></td></tr>');
+				$("#advanced_form").append('<tr><td id="field">Meta Description</td><td><input type="text"  size="60" id="meta_description" value=""/></td></tr>');
+				$("#advanced_form").append('<tr><td id="field">Meta Test</td><td><input type="text"  size="60" id="meta_test" value=""/></td></tr>');
+				$("#advanced_form").append('<tr><td id="field">RecordID</td><td><input type="text"  size="60" id="recordID" value=""/></td></tr>');
 			});
 			
 			$('#hide').click(function () {
@@ -144,15 +147,25 @@
 					var $maxParticipants = $.URLEncode( $("#maxParticipants").val() );
 					var $voiceBridge = $.URLEncode( $("#voiceBridge").val() );
 					var $dialNumber = $.URLEncode( $("#dialNumber").val() );
+					var $meta_test = $.URLEncode( $("#meta_test").val() );
+					var $meta_description = $.URLEncode( $("#meta_description").val() );
+					var $recordID = $.URLEncode( $("#recordID").val() );
 					
 					//Creates the URLs
 					var $params = "name=" + $meetingName + "&meetingID=" + $meetingID + "&moderatorPW=" + $moderatorPW + "&attendeePW=" + $attendeePW + "&welcome=" + $welcome;
-					$params += "&logoutURL=" + $logoutURL + "&maxParticipants=" + $maxParticipants + "&voiceBridge=" + $voiceBridge + "&dialNumber=" + $dialNumber;
+					$params += "&logoutURL=" + $logoutURL + "&maxParticipants=" + $maxParticipants + "&voiceBridge=" + $voiceBridge + "&dialNumber=" + $dialNumber + "&meta_test=" + $meta_test + "&meta_description=" + $meta_description;
 					var $createURL = $server + "create?" + $params + "&checksum=" + $.sha1("create" + $params + $salt);
+
+					var $params = "name=" + $meetingName + "&meetingID=" + $meetingID + "&moderatorPW=" + $moderatorPW + "&attendeePW=" + $attendeePW + "&welcome=" + $welcome;
+					$params += "&logoutURL=" + $logoutURL + "&maxParticipants=" + $maxParticipants + "&voiceBridge=" + $voiceBridge + "&dialNumber=" + $dialNumber + "&meta_test=" + $meta_test + "&meta_description=" + $meta_description + "&record=true";
+					var $createURLwithRecording = $server + "create?" + $params + "&checksum=" + $.sha1("create" + $params + $salt);
 				}
 				else {
 					var $params = "name=" + $meetingName + "&meetingID=" + $meetingID + "&moderatorPW=" + $moderatorPW + "&attendeePW=" + $attendeePW;
 					var $createURL = $server + "create?" + $params + "&checksum=" + $.sha1("create" + $params + $salt);
+
+					var $params = "name=" + $meetingName + "&meetingID=" + $meetingID + "&moderatorPW=" + $moderatorPW + "&attendeePW=" + $attendeePW + "&record=true";
+					var $createURLwithRecording = $server + "create?" + $params + "&checksum=" + $.sha1("create" + $params + $salt);
 				}
 				
 				
@@ -172,6 +185,16 @@
 				$params = "random=" + $meetingID;
 				var $getMeetingsURL = $server + "getMeetings?" + $params + "&checksum=" + $.sha1("getMeetings" + $params + $salt);
 				
+				$params = "meetingID=" + $meetingID;
+				var $getRecordingsURL = $server + "getRecordings?" + $params + "&checksum=" + $.sha1("getRecordings" + $params + $salt);				
+
+				$params = "recordID=" + $recordID + "&publish=true";
+				var $publishRecordingsURL = $server + "publishRecordings?" + $params + "&checksum=" + $.sha1("getRecordings" + $params + $salt);				
+
+				$params = "recordID=" + $recordID + "&publish=false";
+				var $unpublishRecordingsURL = $server + "publishRecordings?" + $params + "&checksum=" + $.sha1("getRecordings" + $params + $salt);				
+
+
 				$params = "meetingID=" + $meetingID + "&password=" + $moderatorPW;
 				var $endURL = $server + "end?" + $params + "&checksum=" + $.sha1("end" + $params + $salt);
 				
@@ -180,12 +203,17 @@
 				$("#links_table").remove();		//if the tables already exists it removes it
 				$("#links").append('<table id="links_table"></table>');
 				$("#links_table").append('<tr><td>Create</td> <td><a href="' + $createURL + '" target="_blank">' + $createURL + '</a></td>');
+				$("#links_table").append('<tr><td>Create with recording</td> <td><a href="' + $createURLwithRecording + '" target="_blank">' + $createURLwithRecording + '</a></td>');
 				$("#links_table").append('<tr><td>Join as Moderator</td> <td><a href="' + $joinModeratorURL + '" target="_blank">' + $joinModeratorURL + '</a></td>');
 				$("#links_table").append('<tr><td>Join as Attendee</td> <td><a href="' + $joinAttendeeURL + '" target="_blank">' + $joinAttendeeURL + '</a></td>');
 				$("#links_table").append('<tr><td>isMeetingRunning</td> <td><a href="' + $isMeetingRunningURL + '" target="_blank">' + $isMeetingRunningURL + '</a></td>');
 				$("#links_table").append('<tr><td>getMeetingInfo</td> <td><a href="' + $getMeetingInfoURL + '" target="_blank">' + $getMeetingInfoURL + '</a></td>');
 				$("#links_table").append('<tr><td>getMeetings</td> <td><a href="' + $getMeetingsURL + '" target="_blank">' + $getMeetingsURL + '</a></td>');
 				$("#links_table").append('<tr><td>end</td> <td><a href="' + $endURL + '" target="_blank">' + $endURL + '</a></td>');
+				$("#links_table").append('<tr><td>getRecordings</td> <td><a href="' + $getRecordingsURL + '" target="_blank">' + $getRecordingsURL + '</a></td>');
+				$("#links_table").append('<tr><td>setPublishRecordings[publish]</td> <td><a href="' + $publishRecordingsURL + '" target="_blank">' + $publishRecordingsURL + '</a></td>');
+				$("#links_table").append('<tr><td>setPublishRecordings[unpublish]</td> <td><a href="' + $unpublishRecordingsURL + '" target="_blank">' + $unpublishRecordingsURL + '</a></td>');
+				$("#links_table").append('<tr><td>deleteRecordings</td> <td><a href="' + $deleteRecordings + '" target="_blank">' + $getRecordingsURL + '</a></td>');
 				
 				
 				//alert('Handler for .submit() called.' + $server);
