@@ -164,13 +164,13 @@
                                         var $getRecordingsURL = $server + "getRecordings?" + $params + "&checksum=" + $.sha1("getRecordings" + $params + $salt);				
 
                                         $params = "recordID=" + $recordID + "&publish=true";
-                                        var $publishRecordingsURL = $server + "publishRecordings?" + $params + "&checksum=" + $.sha1("getRecordings" + $params + $salt);				
+                                        var $publishRecordingsURL = $server + "publishRecordings?" + $params + "&checksum=" + $.sha1("publishRecordings" + $params + $salt);				
 
                                         $params = "recordID=" + $recordID + "&publish=false";
-                                        var $unpublishRecordingsURL = $server + "publishRecordings?" + $params + "&checksum=" + $.sha1("getRecordings" + $params + $salt);
+                                        var $unpublishRecordingsURL = $server + "publishRecordings?" + $params + "&checksum=" + $.sha1("publishRecordings" + $params + $salt);
                                         
                                         $params = "recordID=" + $recordID;
-                                        var $deleteRecordingsURL = $server + "deleteRecordings?" + $params + "&checksum=" + $.sha1("getRecordings" + $params + $salt);				
+                                        var $deleteRecordingsURL = $server + "deleteRecordings?" + $params + "&checksum=" + $.sha1("deleteRecordings" + $params + $salt);				
 
 
 				}
